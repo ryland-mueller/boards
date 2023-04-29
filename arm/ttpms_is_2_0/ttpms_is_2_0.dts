@@ -40,14 +40,6 @@
 	pinctrl-names = "default", "sleep";
 };
 
-&spi1 {
-	compatible = "nordic,nrf-spi";
-	status = "okay";
-	pinctrl-0 = <&spi1_default>;
-	pinctrl-1 = <&spi1_sleep>;
-	pinctrl-names = "default", "sleep";
-};
-
 &flash0 {
 	partitions {
 		compatible = "fixed-partitions";
