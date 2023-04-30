@@ -5,7 +5,7 @@ Each board definition represents a specific set of PCB design files, and in most
 
 For example, `ttpms_is_2_0` is the first design of the TTPMS V2 internal sensor main board.
 
-As another example, `ttpms_rx_2_1` will be the first revision of the TTPMS V2 receiver hardware, which will bring out GPIO pins to the RBG status LED drivers.
+As another example, `ttpms_rx_2_1` will be the first revision of the TTPMS V2 receiver hardware, which will bring out GPIO pins to the RGB status LED drivers.
 
 The odd case is `ttpms_exm_2_0`, the common external sensor main board which is used for both front tire and rear tire varieties of external sensors. Since the forward face of the front tires move significantly throughout the range of steering, a larger IR array/camera is required to capture this area, which requires a higher supply voltage, and in turn a different voltage regulator to be populated on the physical PCB. So although there are actually two different physical main board assemblies, and two different daughter boards to mount the IR arrays, these differences in hardware are not relevant to the information contained in the board definition, so both varieties can be represented by the same `ttpms_exm_2_0` definition files.
 
