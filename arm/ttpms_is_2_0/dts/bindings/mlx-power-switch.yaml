@@ -1,0 +1,10 @@
+description: GPIO pin to switch power to the MLX temperature sensor
+
+compatible: "mlx-power-switch"
+
+properties:
+  gpios:
+    type: phandle-array
+    required: true
+    description: |
+      The GPIO connected to the gate of the MOSFET.

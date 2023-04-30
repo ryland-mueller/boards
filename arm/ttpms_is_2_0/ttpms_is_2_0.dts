@@ -14,6 +14,11 @@
 		zephyr,flash = &flash0;
 		zephyr,code-partition = &slot0_partition;
 	};
+
+	mlx_power: mlx_power {
+		compatible = "mlx-power-switch";
+		gpios = <&gpio0 22 GPIO_ACTIVE_HIGH>;
+	};
 };
 
 &adc {
