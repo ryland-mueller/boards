@@ -3,11 +3,11 @@
 
 /dts-v1/;
 #include <nordic/nrf52833_qiaa.dtsi>
-#include "ttpms_rx_2_0-pinctrl.dtsi"
+#include "ttpms_rx_1_0-pinctrl.dtsi"
 
 / {
-	model = "TTPMS Receiver V2";
-	compatible = "schulich-racing,ttpms-rx-2-0";
+	model = "TTPMS Receiver V1";
+	compatible = "schulich-racing,ttpms-rx-1-0";
 
 	chosen {
 		zephyr,sram = &sram0;
@@ -40,15 +40,14 @@
 	pinctrl-1 = <&spi0_sleep>;
 	pinctrl-names = "default", "sleep";
 
-	cs-gpios = <&gpio0 11 GPIO_ACTIVE_LOW>,		// SD card CS on P0.11
-			   <&gpio0 17 GPIO_ACTIVE_LOW>;		// MCP2515 CS on P0.17
+	cs-gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;		// MCP2515 CS on P0.12
 
-	can: can@1 {
+	can: can@0 {
 		compatible = "microchip,mcp2515";
 		status = "okay";
 		spi-max-frequency = <1000000>;
-		int-gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;	// interupt on P0.15
-		reg = <1>;			// use second CS pin (see cs-gpios above)
+		int-gpios = <&gpio0 27 GPIO_ACTIVE_LOW>;	// board does not actually have INT wired, magnet-wired to P0.27
+		reg = <0>;			// use first CS pin (see cs-gpios above)
 		osc-freq = <20000000>;	// 20MHz oscillator
 		bus-speed = <1000000>;	// 1Mbps
 		sjw = <1>;
