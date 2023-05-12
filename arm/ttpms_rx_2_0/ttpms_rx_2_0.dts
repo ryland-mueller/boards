@@ -43,10 +43,21 @@
 	cs-gpios = <&gpio0 11 GPIO_ACTIVE_LOW>,		// SD card CS on P0.11
 			   <&gpio0 17 GPIO_ACTIVE_LOW>;		// MCP2515 CS on P0.17
 
+	sdhc: sdhc@0 {
+		compatible = "zephyr,sdhc-spi-slot";
+		reg = <0>;		// use first CS pin (see cs-gpios above)
+		status = "okay";
+		spi-max-frequency = <24000000>;		// 24MHz (not tested)
+		mmc {
+			compatible = "zephyr,sdmmc-disk";
+			status = "okay";
+		};
+	};
+
 	can: can@1 {
 		compatible = "microchip,mcp2515";
 		status = "okay";
-		spi-max-frequency = <1000000>;
+		spi-max-frequency = <10000000>;		// 10MHz (not tested, examples use 1MHz)
 		int-gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;	// interupt on P0.15
 		reg = <1>;			// use second CS pin (see cs-gpios above)
 		osc-freq = <20000000>;	// 20MHz oscillator

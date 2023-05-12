@@ -14,6 +14,12 @@
 		zephyr,flash = &flash0;
 		zephyr,code-partition = &slot0_partition;
 	};
+
+	mlx_power: mlx_power {
+		compatible = "mlx-power-switch";
+		gpios = <&gpio0 22 GPIO_ACTIVE_HIGH>;
+	};
+
 };
 
 &adc {
@@ -38,14 +44,6 @@
 	clock-frequency = <I2C_BITRATE_FAST>;
 	pinctrl-0 = <&i2c0_default>;
 	pinctrl-1 = <&i2c0_sleep>;
-	pinctrl-names = "default", "sleep";
-};
-
-&spi1 {
-	compatible = "nordic,nrf-spi";
-	status = "okay";
-	pinctrl-0 = <&spi1_default>;
-	pinctrl-1 = <&spi1_sleep>;
 	pinctrl-names = "default", "sleep";
 };
 
